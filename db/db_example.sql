@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-05-2023 a las 02:13:16
+-- Tiempo de generación: 29-05-2023 a las 03:11:39
 -- Versión del servidor: 10.4.25-MariaDB
 -- Versión de PHP: 8.1.10
 
@@ -45,7 +45,8 @@ INSERT INTO `usuarios` (`id`, `nombre`, `cargo`, `usuario`, `contraseña`) VALUE
 (70546734, 'Ariel Alvarez', 'Auxiliar contable', 'ariel.alvarez@mail.com', 'prueba123'),
 (71646734, 'Antonio Otalvaro', 'Auxiliar contable', 'toni.ota@mail.com', 'prueba123'),
 (71756734, 'Julian Lopez', 'Auxiliar contable', 'julian.lopez@mail.com', 'prueba123'),
-(71756745, 'Juliana Lopera', 'Auxiliar contable', 'juliana.lopera@mail.com', 'prueba123');
+(71756745, 'Juliana Lopera', 'Auxiliar contable', 'juliana.lopera@mail.com', 'prueba123'),
+(1234567890, 'Adrían Mina', 'Administrador', 'admin@mail.com', '$2b$10$3cvKj6R./U0h/pJbGNWd8.TEwOUsKNRDCpS8e9mFTLX8qLNv.vtZy');
 
 --
 -- Índices para tablas volcadas
