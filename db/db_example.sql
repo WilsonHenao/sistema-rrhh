@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-05-2023 a las 03:11:39
+-- Tiempo de generación: 30-05-2023 a las 08:20:04
 -- Versión del servidor: 10.4.25-MariaDB
 -- Versión de PHP: 8.1.10
 
@@ -20,6 +20,26 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `db_example`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `cargo`
+--
+
+CREATE TABLE `cargo` (
+  `id` int(5) NOT NULL,
+  `nombre` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `cargo`
+--
+
+INSERT INTO `cargo` (`id`, `nombre`) VALUES
+(1, 'Auxiliar de bodega'),
+(2, 'Auxiliar de produccion'),
+(3, 'Asistente logistico');
 
 -- --------------------------------------------------------
 
@@ -48,15 +68,77 @@ INSERT INTO `usuarios` (`id`, `nombre`, `cargo`, `usuario`, `contraseña`) VALUE
 (71756745, 'Juliana Lopera', 'Auxiliar contable', 'juliana.lopera@mail.com', 'prueba123'),
 (1234567890, 'Adrían Mina', 'Administrador', 'admin@mail.com', '$2b$10$3cvKj6R./U0h/pJbGNWd8.TEwOUsKNRDCpS8e9mFTLX8qLNv.vtZy');
 
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `vacante`
+--
+
+CREATE TABLE `vacante` (
+  `id` int(5) NOT NULL,
+  `nombre` varchar(50) DEFAULT NULL,
+  `descripcion` varchar(200) DEFAULT NULL,
+  `idCargo` int(5) DEFAULT NULL,
+  `idUsuario` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `vacante`
+--
+
+INSERT INTO `vacante` (`id`, `nombre`, `descripcion`, `idCargo`, `idUsuario`) VALUES
+(1, 'Auxiliar de bodega conocimientos en ofimática (Exc', 'Importante empresa del sector, requiere para su equipo de trabajo Auxiliar de bodega con experiencia mínima de 1 año en cargos relacionados, debe ser bachiller.', 1, 7006123),
+(2, 'Auxiliar de producción', 'Importante empresa dedicada a la fabricación de productos metálicos para uso estructural requiere para su equipo de trabajo Auxiliar de producción.', 2, 7006123),
+(3, 'Asistente de logística', 'Se solicita tecnólogo en logística o profesional recién egresado con experiencia mayor a 6 meses preferiblemente en funciones de coordinación y aseguramiento de los traslados de vehículos, seguimiento', 3, 7006123);
+
 --
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `cargo`
+--
+ALTER TABLE `cargo`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `vacante`
+--
+ALTER TABLE `vacante`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idCargo` (`idCargo`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `cargo`
+--
+ALTER TABLE `cargo`
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de la tabla `vacante`
+--
+ALTER TABLE `vacante`
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `vacante`
+--
+ALTER TABLE `vacante`
+  ADD CONSTRAINT `idCargo` FOREIGN KEY (`idCargo`) REFERENCES `cargo` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
