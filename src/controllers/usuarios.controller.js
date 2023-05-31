@@ -29,12 +29,16 @@ export const usuarioAccess = async (req, res) => {
   pool.query('SELECT * FROM usuarios WHERE usuario = ?', [username], (error, results) => {
     if (error) throw error;
 
-    if (bcrypt.compareSync(password, results[0].contraseña)){
+    if (results.length > 0) {
+      if (bcrypt.compareSync(password, results[0].contraseña)){
 
-      const token = jwt.sign({ username }, secretKey, { expiresIn: '1h' });
-      
-      res.send({token, results});
-
+        const token = jwt.sign({ username }, secretKey, { expiresIn: '1h' });
+        
+        res.send({token, results, success: true});
+  
+      } else {
+        res.send({success: false})
+      }
     } else {
       res.send({success: false})
     }
