@@ -5,8 +5,8 @@ import jwt from 'jsonwebtoken';
 const secretKey = 'toleranciaCero';
 
 export const createUsuario = async(req, res) => {
-  const {id, nombre, cargo, usuario, password} = req.body
-  const pass = bcrypt.hashSync(password, 10)
+  const {id, nombre, cargo, usuario, contraseña} = req.body
+  const pass = bcrypt.hashSync(contraseña, 10)
   pool.query('INSERT INTO usuarios (id, nombre, cargo, usuario, contraseña) VALUES (?,?,?,?,?)', [id, nombre, cargo, usuario, pass], (error, results) => {
     if (error)
       throw error;
@@ -21,6 +21,18 @@ export const getUsuarios = async (req, res) => {
     if (error) throw error;
     res.send(results)
   })
+}
+
+export const updateUsuario = async (req, res) => {
+  const {id} = req.params
+  const {nombre, cargo, usuario, contraseña} = req.body
+
+  pool.query('UPDATE usuarios SET nombre = ?, cargo = ?, usuario = ?, contraseña = ? WHERE id = ?', [nombre, cargo, usuario, contraseña, id], (error, results) => {
+    if (error) throw error;
+    res.send({
+      id, nombre, cargo, usuario, contraseña
+    });
+  });
 }
 
 export const usuarioAccess = async (req, res) => {
