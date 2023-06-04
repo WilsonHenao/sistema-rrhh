@@ -23,6 +23,15 @@ export const getUsuarios = async (req, res) => {
   })
 }
 
+export const getUsuario = async (req, res) => {
+  const {id} = req.params
+
+  pool.query('SELECT * FROM usuarios WHERE id = ?', [id], (error, results) => {
+    if (error) throw error;
+    res.send(results)
+  })
+}
+
 export const updateUsuario = async (req, res) => {
   const {id} = req.params
   const {nombre, cargo, usuario, contraseña} = req.body
