@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-05-2023 a las 08:20:04
+-- Tiempo de generación: 11-06-2023 a las 21:53:51
 -- Versión del servidor: 10.4.25-MariaDB
 -- Versión de PHP: 8.1.10
 
@@ -24,22 +24,37 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `cargo`
+-- Estructura de tabla para la tabla `cargos`
 --
 
-CREATE TABLE `cargo` (
+CREATE TABLE `cargos` (
   `id` int(5) NOT NULL,
   `nombre` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Volcado de datos para la tabla `cargo`
+-- Volcado de datos para la tabla `cargos`
 --
 
-INSERT INTO `cargo` (`id`, `nombre`) VALUES
+INSERT INTO `cargos` (`id`, `nombre`) VALUES
 (1, 'Auxiliar de bodega'),
 (2, 'Auxiliar de produccion'),
 (3, 'Asistente logistico');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `postulantes`
+--
+
+CREATE TABLE `postulantes` (
+  `id` int(5) NOT NULL,
+  `nombre` varchar(50) DEFAULT NULL,
+  `email` varchar(50) DEFAULT NULL,
+  `telefono` int(12) DEFAULT NULL,
+  `estado` varchar(50) DEFAULT NULL,
+  `idVacante` int(5) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -60,21 +75,16 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `nombre`, `cargo`, `usuario`, `contraseña`) VALUES
-(7006123, 'Zoraida Zapata', 'Auxiliar contable', 'zora.zapa@mail.com', '$2b$10$yfeKUyqrNQ80SAHbE9rMk.bR3zn17EX7vorxMEbKASCqq7iGfKzY2'),
-(70535734, 'Carla Carmona', 'Auxiliar contable', 'carla.carmona@mail.com', 'prueba123'),
-(70546734, 'Ariel Alvarez', 'Auxiliar contable', 'ariel.alvarez@mail.com', 'prueba123'),
-(71646734, 'Antonio Otalvaro', 'Auxiliar contable', 'toni.ota@mail.com', 'prueba123'),
-(71756734, 'Julian Lopez', 'Auxiliar contable', 'julian.lopez@mail.com', 'prueba123'),
-(71756745, 'Juliana Lopera', 'Auxiliar contable', 'juliana.lopera@mail.com', 'prueba123'),
-(1234567890, 'Adrían Mina', 'Administrador', 'admin@mail.com', '$2b$10$3cvKj6R./U0h/pJbGNWd8.TEwOUsKNRDCpS8e9mFTLX8qLNv.vtZy');
+(70535743, 'Zoraida Zapata', 'Auxiliar Contable', 'zora.zapa@mail.com', '$2b$10$tSMo6YUEWBXPVtYFIRe5s.xoRP9.eWN2AiPI/d8Y/yL3p47.gBP.2'),
+(71756745, 'Adrían Mina', 'Administrador', 'admin@mail.com', '$2b$10$3cvKj6R./U0h/pJbGNWd8.TEwOUsKNRDCpS8e9mFTLX8qLNv.vtZy');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `vacante`
+-- Estructura de tabla para la tabla `vacantes`
 --
 
-CREATE TABLE `vacante` (
+CREATE TABLE `vacantes` (
   `id` int(5) NOT NULL,
   `nombre` varchar(50) DEFAULT NULL,
   `descripcion` varchar(200) DEFAULT NULL,
@@ -83,10 +93,10 @@ CREATE TABLE `vacante` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Volcado de datos para la tabla `vacante`
+-- Volcado de datos para la tabla `vacantes`
 --
 
-INSERT INTO `vacante` (`id`, `nombre`, `descripcion`, `idCargo`, `idUsuario`) VALUES
+INSERT INTO `vacantes` (`id`, `nombre`, `descripcion`, `idCargo`, `idUsuario`) VALUES
 (1, 'Auxiliar de bodega conocimientos en ofimática (Exc', 'Importante empresa del sector, requiere para su equipo de trabajo Auxiliar de bodega con experiencia mínima de 1 año en cargos relacionados, debe ser bachiller.', 1, 7006123),
 (2, 'Auxiliar de producción', 'Importante empresa dedicada a la fabricación de productos metálicos para uso estructural requiere para su equipo de trabajo Auxiliar de producción.', 2, 7006123),
 (3, 'Asistente de logística', 'Se solicita tecnólogo en logística o profesional recién egresado con experiencia mayor a 6 meses preferiblemente en funciones de coordinación y aseguramiento de los traslados de vehículos, seguimiento', 3, 7006123);
@@ -96,10 +106,17 @@ INSERT INTO `vacante` (`id`, `nombre`, `descripcion`, `idCargo`, `idUsuario`) VA
 --
 
 --
--- Indices de la tabla `cargo`
+-- Indices de la tabla `cargos`
 --
-ALTER TABLE `cargo`
+ALTER TABLE `cargos`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `postulantes`
+--
+ALTER TABLE `postulantes`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idVacante` (`idVacante`);
 
 --
 -- Indices de la tabla `usuarios`
@@ -108,9 +125,9 @@ ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `vacante`
+-- Indices de la tabla `vacantes`
 --
-ALTER TABLE `vacante`
+ALTER TABLE `vacantes`
   ADD PRIMARY KEY (`id`),
   ADD KEY `idCargo` (`idCargo`);
 
@@ -119,15 +136,15 @@ ALTER TABLE `vacante`
 --
 
 --
--- AUTO_INCREMENT de la tabla `cargo`
+-- AUTO_INCREMENT de la tabla `cargos`
 --
-ALTER TABLE `cargo`
+ALTER TABLE `cargos`
   MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT de la tabla `vacante`
+-- AUTO_INCREMENT de la tabla `vacantes`
 --
-ALTER TABLE `vacante`
+ALTER TABLE `vacantes`
   MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
@@ -135,10 +152,16 @@ ALTER TABLE `vacante`
 --
 
 --
--- Filtros para la tabla `vacante`
+-- Filtros para la tabla `postulantes`
 --
-ALTER TABLE `vacante`
-  ADD CONSTRAINT `idCargo` FOREIGN KEY (`idCargo`) REFERENCES `cargo` (`id`);
+ALTER TABLE `postulantes`
+  ADD CONSTRAINT `idVacante` FOREIGN KEY (`idVacante`) REFERENCES `vacantes` (`id`);
+
+--
+-- Filtros para la tabla `vacantes`
+--
+ALTER TABLE `vacantes`
+  ADD CONSTRAINT `idCargo` FOREIGN KEY (`idCargo`) REFERENCES `cargos` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
