@@ -11,7 +11,7 @@ export const createVacante = async(req, res) => {
   });
 }
 
-export const getVacante = async(req, res) => {
+export const getVacantes = async(req, res) => {
   pool.query('SELECT * FROM vacantes', (error, results) => {
     if (error) throw error;
     res.send(results)

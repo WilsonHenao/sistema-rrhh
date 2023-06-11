@@ -1,9 +1,9 @@
 import { Router } from "express";
-import { createCargo, createVacante, getVacante } from "../controllers/vacantes.controller.js";
+import { createCargo, createVacante, getVacantes } from "../controllers/vacantes.controller.js";
 
 const router = Router()
 
-router.get('/vacantes', getVacante)
+router.get('/vacantes', getVacantes)
 router.post('/vacantes', createVacante)
 router.post('/cargo', createCargo)
 
