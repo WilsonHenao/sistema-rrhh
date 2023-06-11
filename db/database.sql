@@ -26,3 +26,16 @@ ADD CONSTRAINT idCargo FOREIGN KEY (idCargo) REFERENCES cargo(id);
 
 ALTER TABLE vacante
 ADD CONSTRAINT idUsuario FOREIGN KEY (idUsuario) REFERENCES usuario(id);  
+
+
+CREATE TABLE postulante (
+  id INT(5) NOT NULL PRIMARY KEY,
+  nombre VARCHAR(50),
+  email VARCHAR(50),
+  telefono INT(12),
+  estado VARCHAR(50),
+  idVacante INT(5)
+);
+
+ALTER TABLE postulante
+ADD CONSTRAINT idVacante FOREIGN KEY (idVacante) REFERENCES vacante(id);
