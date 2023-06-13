@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-06-2023 a las 02:18:53
+-- Tiempo de generación: 13-06-2023 a las 01:59:02
 -- Versión del servidor: 10.4.25-MariaDB
 -- Versión de PHP: 8.1.10
 
@@ -44,11 +44,32 @@ INSERT INTO `cargos` (`id`, `nombre`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `empleados`
+--
+
+CREATE TABLE `empleados` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(50) DEFAULT NULL,
+  `tipoId` varchar(50) DEFAULT NULL,
+  `edad` int(3) DEFAULT NULL,
+  `sexo` varchar(50) DEFAULT NULL,
+  `estadoCivil` varchar(50) DEFAULT NULL,
+  `telefono` int(12) DEFAULT NULL,
+  `fechaNacimiento` date DEFAULT NULL,
+  `direccionResidencia` varchar(100) DEFAULT NULL,
+  `email` varchar(50) DEFAULT NULL,
+  `entidadEps` varchar(50) DEFAULT NULL,
+  `entidadPension` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `postulantes`
 --
 
 CREATE TABLE `postulantes` (
-  `id` int(5) NOT NULL,
+  `id` int(11) NOT NULL,
   `nombre` varchar(50) DEFAULT NULL,
   `email` varchar(50) DEFAULT NULL,
   `telefono` int(12) DEFAULT NULL,
@@ -117,6 +138,12 @@ INSERT INTO `vacantes` (`id`, `nombre`, `descripcion`, `idCargo`, `idUsuario`) V
 -- Indices de la tabla `cargos`
 --
 ALTER TABLE `cargos`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `empleados`
+--
+ALTER TABLE `empleados`
   ADD PRIMARY KEY (`id`);
 
 --

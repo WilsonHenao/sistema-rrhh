@@ -13,7 +13,7 @@ export const createPostulante = async(req, res) => {
   });
 }
 
-export const getPostulante = async (req, res, next) => {
+export const getConsultaPostulante = async (req, res) => {
   const {id} = req.params
 
   const postulantesResults = await new Promise((resolve, reject) => {
@@ -50,5 +50,15 @@ export const getPostulante = async (req, res, next) => {
     nombre: postulante.nombre,
     cargo,
     estado: postulante.estado
+  })
+}
+
+export const getPostulante = async (req, res) => {
+  const {id} = req.params
+
+  pool.query('SELECT * FROM postulantes WHERE id = ?', [id], (error, results) => {
+    if (error) throw error;
+
+    res.send(results)
   })
 }

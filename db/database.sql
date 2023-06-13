@@ -29,7 +29,7 @@ ADD CONSTRAINT idUsuario FOREIGN KEY (idUsuario) REFERENCES usuario(id);
 
 
 CREATE TABLE postulante (
-  id INT(5) NOT NULL PRIMARY KEY,
+  id INT(11) NOT NULL PRIMARY KEY,
   nombre VARCHAR(50),
   email VARCHAR(50),
   telefono INT(12),
@@ -39,3 +39,19 @@ CREATE TABLE postulante (
 
 ALTER TABLE postulante
 ADD CONSTRAINT idVacante FOREIGN KEY (idVacante) REFERENCES vacante(id);
+
+
+CREATE TABLE empleado (
+  id INT(11) NOT NULL PRIMARY KEY,
+  nombre VARCHAR(50),
+  tipoId VARCHAR(50),
+  edad INT(3),
+  sexo VARCHAR(50),
+  estadoCivil VARCHAR(50),
+  telefono INT(12),
+  fechaNacimiento DATE,
+  direccionResidencia VARCHAR(100),
+  email VARCHAR(50),
+  entidadEps VARCHAR(50),
+  entidadPension VARCHAR(50) 
+)
