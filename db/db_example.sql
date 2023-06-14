@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-06-2023 a las 04:15:32
+-- Tiempo de generación: 14-06-2023 a las 11:54:08
 -- Versión del servidor: 10.4.25-MariaDB
 -- Versión de PHP: 8.1.10
 
@@ -59,8 +59,16 @@ CREATE TABLE `empleados` (
   `direccionResidencia` varchar(100) DEFAULT NULL,
   `email` varchar(50) DEFAULT NULL,
   `entidadEps` varchar(50) DEFAULT NULL,
-  `entidadPension` varchar(50) DEFAULT NULL
+  `entidadPension` varchar(50) DEFAULT NULL,
+  `cargo` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `empleados`
+--
+
+INSERT INTO `empleados` (`id`, `nombre`, `tipoId`, `edad`, `sexo`, `estadoCivil`, `telefono`, `fechaNacimiento`, `direccionResidencia`, `email`, `entidadEps`, `entidadPension`, `cargo`) VALUES
+(7309812, 'Byron Caceres', 'CC', 32, 'masculino', 'Casado', 2147483647, '1991-02-12', 'Cr 8 Cll 5', 'byron.caceres@mail.com', 'Nueva Eps', 'Colpensiones', 'Asistente logistico');
 
 -- --------------------------------------------------------
 
@@ -82,6 +90,7 @@ CREATE TABLE `postulantes` (
 --
 
 INSERT INTO `postulantes` (`id`, `nombre`, `email`, `telefono`, `estado`, `idVacante`) VALUES
+(7309812, 'Byron Caceres', 'byron.caceres@mail.com', 2147483647, 'Finalista', 3),
 (7678432, 'Yeison Ramirez', 'yeison.ramirez@mail.com', 2147483647, 'Postulado', 1);
 
 -- --------------------------------------------------------
