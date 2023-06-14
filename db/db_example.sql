@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-06-2023 a las 01:59:02
+-- Tiempo de generación: 14-06-2023 a las 04:15:32
 -- Versión del servidor: 10.4.25-MariaDB
 -- Versión de PHP: 8.1.10
 
@@ -103,6 +103,7 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `nombre`, `cargo`, `usuario`, `contraseña`) VALUES
+(7249012, 'Aurora Contreras', 'Auxiliar Contable', 'aurora.contreras@mail.com', '$2b$10$PUmHElB6PJJ6TGoJfiL6e.q24zibvt23bLPSOvrOZ5gfTU1jBby7C'),
 (70535743, 'Zoraida Zapata', 'Auxiliar Contable', 'zora.zapa@mail.com', '$2b$10$tSMo6YUEWBXPVtYFIRe5s.xoRP9.eWN2AiPI/d8Y/yL3p47.gBP.2'),
 (71756745, 'Adrían Mina', 'Administrador', 'admin@mail.com', '$2b$10$3cvKj6R./U0h/pJbGNWd8.TEwOUsKNRDCpS8e9mFTLX8qLNv.vtZy'),
 (72908512, 'Ana Liz Tabarez', 'Analista RRHH', 'analizta@mail.com', '$2b$10$SuxOOeIBWRLGTmV7EwAsaOMoSA/PS9/x8v8xNQgcEcJXJu0jaKkzu');
