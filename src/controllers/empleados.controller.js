@@ -25,3 +25,12 @@ export const getEmpleados = async (req, res) => {
     res.send(results)
   })
 }
+
+export const getEmpleado = async (req, res) => {
+  const {id} = req.params
+
+  pool.query('SELECT * FROM empleados WHERE id = ?', [id], (error, results) => {
+    if (error) throw error;
+    res.send(results)
+  })
+}
